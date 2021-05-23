@@ -19,7 +19,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
  renderer.render( scene, camera);
 
- const geometry = new THREE.TorusGeometry( 10, 3, 16, 100)
+ const geometry = new THREE.TorusGeometry( 8, 4, 4, 4)
  const material = new THREE.MeshStandardMaterial( { color: 0x999888 } );
  const torus = new THREE.Mesh( geometry, material )
 
@@ -45,7 +45,7 @@ function addStar() {
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff })
   const star = new THREE.Mesh( geometry, material )
    
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 100 ) );
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 500 ) );
 
   star.position.set(x, y, z)
   scene.add(star)
@@ -58,12 +58,13 @@ Array(200).fill().forEach(addStar)
  
 
  function animate() {
+   requestAnimationFrame( animate );
 
    torus.rotation.x += 0.001;
    torus.rotation.y += 0.005;
    torus.rotation.z += 0.0001;
 
-   controls.update()
+   controls.update();
 
    renderer.render( scene, camera );
 
