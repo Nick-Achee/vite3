@@ -15,7 +15,8 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
  renderer.setPixelRatio(window.devicePixelRatio );
  renderer.setSize( window.innerWidth, window.innerHeight );
- camera.position.setZ(30);
+ camera.position.setZ(60);
+ camera.position.setY(20);
 
  renderer.render( scene, camera);
 
@@ -25,6 +26,17 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
  scene.add(torus)
 
+ const nickTexture = new THREE.TextureLoader().load('laguna.jpg');
+
+ const nick = new THREE.Mesh(
+   new THREE.BoxGeometry(10,10,10),
+   new THREE.MeshBasicMaterial( { map: nickTexture } )
+   
+ );
+ 
+ scene.add(nick)
+ 
+nick.position.z = 20
  
 
  const pointLight = new THREE.PointLight(0xffffff)
@@ -52,10 +64,13 @@ function addStar() {
 
 } 
 
-Array(200).fill().forEach(addStar) 
+Array(3000).fill().forEach(addStar) 
 
-
+const spaceTexture = new THREE.TextureLoader().load('space.jpeg');
+scene.background = spaceTexture
  
+
+
 
  function animate() {
    requestAnimationFrame( animate );
