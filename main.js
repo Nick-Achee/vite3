@@ -30,7 +30,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
  const nick = new THREE.Mesh(
    new THREE.BoxGeometry(10,10,10),
-   new THREE.MeshBasicMaterial( { map: nickTexture } )
+   new THREE.MeshStandardMaterial( { color: 0x999888 } ),
    
  );
  
