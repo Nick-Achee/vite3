@@ -20,7 +20,7 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
  renderer.render( scene, camera);
 
- const geometry = new THREE.TorusGeometry( 8, 4, 4, 4)
+ const geometry = new THREE.TorusGeometry( 3, 4, 40, 3)
  const material = new THREE.MeshStandardMaterial( { color: 0x999888 } );
  const torus = new THREE.Mesh( geometry, material )
 
@@ -47,7 +47,7 @@ nick.position.z = 20
  scene.add(pointLight, ambientLight)
 
 const lightHelper = new THREE.PointLightHelper(pointLight)
-const gridHelper = new THREE.GridHelper(200, 50)
+const gridHelper = new THREE.GridHelper(200, 200)
 scene.add(lightHelper, gridHelper);  
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -57,16 +57,16 @@ function addStar() {
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff })
   const star = new THREE.Mesh( geometry, material )
    
-  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 500 ) );
+  const [x, y, z] = Array(4).fill().map(() => THREE.MathUtils.randFloatSpread( 500 ) );
 
   star.position.set(x, y, z)
   scene.add(star)
 
 } 
 
-Array(3000).fill().forEach(addStar) 
+Array(500).fill().forEach(addStar) 
 
-const spaceTexture = new THREE.TextureLoader().load('space.jpeg');
+const spaceTexture = new THREE.TextureLoader().load();
 scene.background = spaceTexture
  
 
