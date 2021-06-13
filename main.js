@@ -26,7 +26,6 @@ import { OrbitControls } from 'three/examples/jsm/controls/OrbitControls';
 
  scene.add(torus)
 
- const nickTexture = new THREE.TextureLoader().load('laguna.jpg');
 
  const nick = new THREE.Mesh(
    new THREE.BoxGeometry(10,10,10),
@@ -57,7 +56,7 @@ function addStar() {
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff })
   const star = new THREE.Mesh( geometry, material )
    
-  const [x, y, z] = Array(4).fill().map(() => THREE.MathUtils.randFloatSpread( 1000 ) );
+  const [x, y, z] = Array(3).fill().map(() => THREE.MathUtils.randFloatSpread( 1000 ) );
 
   star.position.set(x, y, z)
   scene.add(star)
