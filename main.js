@@ -47,7 +47,7 @@ nick.position.z = 20
  scene.add(pointLight, ambientLight)
 
 const lightHelper = new THREE.PointLightHelper(pointLight)
-const gridHelper = new THREE.GridHelper(200, 200)
+const gridHelper = new THREE.GridHelper(20, 20)
 scene.add(lightHelper, gridHelper);  
 
 const controls = new OrbitControls(camera, renderer.domElement);
@@ -57,7 +57,7 @@ function addStar() {
   const material = new THREE.MeshStandardMaterial( { color: 0xffffff })
   const star = new THREE.Mesh( geometry, material )
    
-  const [x, y, z] = Array(4).fill().map(() => THREE.MathUtils.randFloatSpread( 500 ) );
+  const [x, y, z] = Array(4).fill().map(() => THREE.MathUtils.randFloatSpread( 1000 ) );
 
   star.position.set(x, y, z)
   scene.add(star)
